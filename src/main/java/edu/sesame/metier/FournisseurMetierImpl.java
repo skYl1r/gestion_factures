@@ -51,6 +51,6 @@ public class FournisseurMetierImpl implements IFournisseurMetier {
 
 	@Override
 	public Page<Fournisseur> getFournisseursByMotCle(String mc, int page, int size) {
-		return frsRep.findAllByMotCle(mc, new PageRequest(page, size));
+		return frsRep.findAllByMotCle(mc, PageRequest.of(page, size));
 	}
 }

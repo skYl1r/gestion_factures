@@ -6,6 +6,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import edu.sesame.conversions.ClientConverter;
@@ -32,6 +33,12 @@ public class ServletInitializer extends SpringBootServletInitializer {
 		public void addFormatters(FormatterRegistry registry) {
 			registry.addConverter(new ClientConverter(mc));
 			registry.addConverter(new FournisseurConverter(mf));
+		}
+
+		@Override
+		public void addViewControllers(ViewControllerRegistry registry) {
+			// TODO Auto-generated method stub
+			super.addViewControllers(registry);
 		}
 	}
 }

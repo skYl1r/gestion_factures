@@ -42,43 +42,43 @@ public class DossierMetierImpl implements IDossierMetier {
 
 	@Override
 	public Page<Dossier> getDossiers(String nom, int page, int size) {
-		return dosRep.findAll(nom, new PageRequest(page, size));
+		return dosRep.findAll(nom, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Dossier> getDossiersByDateFermeture(String nom, Date dateFermeture, int page, int size) {
-		return dosRep.findAllByDateFermeture(nom, dateFermeture, new PageRequest(page, size));
+		return dosRep.findAllByDateFermeture(nom, dateFermeture, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Dossier> getDossiersByDateCreation(String nom, Date dateCreation, int page, int size) {
-		return dosRep.findAllByDateCreation(nom, dateCreation, new PageRequest(page, size));
+		return dosRep.findAllByDateCreation(nom, dateCreation, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Dossier> getDossiersByDateCreationFermeture(String nom, Date dateCreation, Date dateFermeture, int page,
 			int size) {
-		return dosRep.findAllByDateCreationFermeture(nom, dateCreation, dateFermeture, new PageRequest(page, size));
+		return dosRep.findAllByDateCreationFermeture(nom, dateCreation, dateFermeture, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Dossier> getDossiersClosedByDateCreation(String nom, Date dateCreation, int page, int size) {
-		return dosRep.findAllClosedByDateCreation(nom, dateCreation, new PageRequest(page, size));
+		return dosRep.findAllClosedByDateCreation(nom, dateCreation, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Dossier> getDossiersClosed(String nom, int page, int size) {
-		return dosRep.findAllClosed(nom, new PageRequest(page, size));
+		return dosRep.findAllClosed(nom, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Dossier> getDossiersNotClosed(String nom, int page, int size) {
-		return dosRep.findAllNotClosed(nom, new PageRequest(page, size));
+		return dosRep.findAllNotClosed(nom, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Dossier> getDossiersNotClosedByDateCreation(String nom, Date dateCreation, int page, int size) {
-		return dosRep.findAllNotClosedByDateCreation(nom, dateCreation, new PageRequest(page, size));
+		return dosRep.findAllNotClosedByDateCreation(nom, dateCreation, PageRequest.of(page, size));
 	}
 
 	@Override

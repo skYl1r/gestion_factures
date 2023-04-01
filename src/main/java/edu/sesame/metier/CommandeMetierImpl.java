@@ -32,7 +32,7 @@ public class CommandeMetierImpl implements ICommandeMetier {
 
 	@Override
 	public Page<Commande> getCommandes(Long numDossier, int page, int size) {
-		return cmdRep.findAll(new PageRequest(page, size));
+		return cmdRep.findAll(PageRequest.of(page, size));
 	}
 
 	@Override
@@ -66,84 +66,84 @@ public class CommandeMetierImpl implements ICommandeMetier {
 
 	@Override
 	public Page<Commande> getCommandesClients(Long numDossier, int page, int size) {
-		return cmdRep.findAllCommandesClients(numDossier, new PageRequest(page, size));
+		return cmdRep.findAllCommandesClients(numDossier, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesFournisseurs(Long numDossier, int page, int size) {
-		return cmdRep.findAllCommandesFournisseurs(numDossier, new PageRequest(page, size));
+		return cmdRep.findAllCommandesFournisseurs(numDossier, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesClients(Long numDossier, Date date, int page, int size) {
-		return cmdRep.findAllCommandesClients(numDossier, date, new PageRequest(page, size));
+		return cmdRep.findAllCommandesClients(numDossier, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesFournisseurs(Long numDossier, Date date, int page, int size) {
-		return cmdRep.findAllCommandesFournisseurs(numDossier, date, new PageRequest(page, size));
+		return cmdRep.findAllCommandesFournisseurs(numDossier, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesOfClient(Long numDossier, String code, int page, int size) {
-		return cmdRep.findAllCommandesOfClient(numDossier, code, new PageRequest(page, size));
+		return cmdRep.findAllCommandesOfClient(numDossier, code, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesOfFournisseur(Long numDossier, String code, int page, int size) {
-		return cmdRep.findAllCommandesOfFournisseur(numDossier, code, new PageRequest(page, size));
+		return cmdRep.findAllCommandesOfFournisseur(numDossier, code, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesOfClient(Long numDossier, String code, Date date, int page, int size) {
-		return cmdRep.findAllCommandesOfClient(numDossier, code, date, new PageRequest(page, size));
+		return cmdRep.findAllCommandesOfClient(numDossier, code, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesOfFournisseur(Long numDossier, String code, Date date, int page, int size) {
-		return cmdRep.findAllCommandesOfFournisseur(numDossier, code, date, new PageRequest(page, size));
+		return cmdRep.findAllCommandesOfFournisseur(numDossier, code, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesClients(Long numDossier, Boolean valide, int page, int size) {
-		return cmdRep.findAllCommandesClients(numDossier, valide, new PageRequest(page, size));
+		return cmdRep.findAllCommandesClients(numDossier, valide, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesClients(Long numDossier, Boolean valide, Date date, int page, int size) {
-		return cmdRep.findAllCommandesClients(numDossier, valide, date, new PageRequest(page, size));
+		return cmdRep.findAllCommandesClients(numDossier, valide, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesOfClient(Long numDossier, String code, Boolean valide, int page, int size) {
-		return cmdRep.findAllCommandesOfClient(numDossier, code, valide, new PageRequest(page, size));
+		return cmdRep.findAllCommandesOfClient(numDossier, code, valide, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesOfClient(Long numDossier, String code, Boolean valide, Date date, int page,
 			int size) {
-		return cmdRep.findAllCommandesOfClient(numDossier, code, date, new PageRequest(page, size));
+		return cmdRep.findAllCommandesOfClient(numDossier, code, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesFournisseurs(Long numDossier, Boolean valide, int page, int size) {
-		return cmdRep.findAllCommandesFournisseurs(numDossier, valide, new PageRequest(page, size));
+		return cmdRep.findAllCommandesFournisseurs(numDossier, valide, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesFournisseurs(Long numDossier, Boolean valide, Date date, int page, int size) {
-		return cmdRep.findAllCommandesFournisseurs(numDossier, valide, date, new PageRequest(page, size));
+		return cmdRep.findAllCommandesFournisseurs(numDossier, valide, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesOfFournisseur(Long numDossier, String code, Boolean valide, int page, int size) {
-		return cmdRep.findAllCommandesOfClient(numDossier, code, valide, new PageRequest(page, size));
+		return cmdRep.findAllCommandesOfClient(numDossier, code, valide, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Commande> getCommandesOfFournisseur(Long numDossier, String code, Boolean valide, Date date, int page,
 			int size) {
-		return cmdRep.findAllCommandesOfFournisseur(numDossier, code, valide, date, new PageRequest(page, size));
+		return cmdRep.findAllCommandesOfFournisseur(numDossier, code, valide, date, PageRequest.of(page, size));
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public class ReductionMetierImpl implements IReductionMetier {
 
 	@Override
 	public Page<Reduction> getReductions(int page, int size) {
-		return regRep.findAll(new PageRequest(page, size));
+		return regRep.findAll(PageRequest.of(page, size));
 	}
 
 	@Override

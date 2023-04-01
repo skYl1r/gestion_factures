@@ -51,11 +51,11 @@ public class UserMetierImpl implements IUserMetier {
 
 	@Override
 	public Page<User> getUsers(int page, int size) {
-		return cltRep.findAll(new PageRequest(page, size));
+		return cltRep.findAll(PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<User> getUsersByMotCle(String mc, int page, int size) {
-		return cltRep.findAllByMotCle(mc, new PageRequest(page, size));
+		return cltRep.findAllByMotCle(mc, PageRequest.of(page, size));
 	}
 }

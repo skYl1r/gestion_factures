@@ -42,7 +42,7 @@ public class UserController {
 	public String index(Model model, @RequestParam(name = "p", defaultValue = "0") int p,
 			@RequestParam(name = "s", defaultValue = "8") int s,
 			@RequestParam(name = "mc", defaultValue = "") String mc) {
-		Page<User> users = usrRep.findAll(new PageRequest(p, s));
+		Page<User> users = usrRep.findAll(PageRequest.of(p, s));
 		model.addAttribute("users", users.getContent());
 
 		model.addAttribute("pages", new int[users.getTotalPages()]);

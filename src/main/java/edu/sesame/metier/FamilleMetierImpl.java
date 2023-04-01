@@ -22,7 +22,7 @@ public class FamilleMetierImpl implements IFamilleMetier {
 
 	@Override
 	public Page<Famille> getFamilles(int page, int size) {
-		return fmlRep.findAll(new PageRequest(page, size));
+		return fmlRep.findAll(PageRequest.of(page, size));
 	}
 
 	@Override

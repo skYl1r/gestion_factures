@@ -51,11 +51,11 @@ public class ClientMetierImpl implements IClientMetier {
 
 	@Override
 	public Page<Client> getClients(int page, int size) {
-		return cltRep.findAll(new PageRequest(page, size));
+		return cltRep.findAll(PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Client> getClientsByMotCle(String mc, int page, int size) {
-		return cltRep.findAllByMotCle(mc, new PageRequest(page, size));
+		return cltRep.findAllByMotCle(mc, PageRequest.of(page, size));
 	}
 }

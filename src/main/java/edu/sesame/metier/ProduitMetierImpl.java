@@ -22,7 +22,7 @@ public class ProduitMetierImpl implements IProduitMetier {
 
 	@Override
 	public Page<Produit> getProduitsByFamille(Long codeFamille, int page, int size) {
-		return prdRep.getAllByCodeFamille(codeFamille, new PageRequest(page, size));
+		return prdRep.getAllByCodeFamille(codeFamille, PageRequest.of(page, size));
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class ProduitMetierImpl implements IProduitMetier {
 
 	@Override
 	public Page<Produit> getProduitsByMotCle(String mc, int page, int size) {
-		return prdRep.findAllByMotCle(mc, new PageRequest(page, size));
+		return prdRep.findAllByMotCle(mc, PageRequest.of(page, size));
 	}
 
 	@Override
