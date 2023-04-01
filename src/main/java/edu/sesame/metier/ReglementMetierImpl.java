@@ -27,7 +27,7 @@ public class ReglementMetierImpl implements IReglementMetier {
 
 	@Override
 	public Page<Reglement> getReglements(int page, int size) {
-		return regRep.findAll(new PageRequest(page, size));
+		return regRep.findAll(PageRequest.of(page, size));
 	}
 
 	@Override

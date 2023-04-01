@@ -28,7 +28,7 @@ public class FactureMetierImpl implements IFactureMetier {
 
 	@Override
 	public Page<Facture> getFactures(Long numDossier, int page, int size) {
-		return fctRep.findAll(new PageRequest(page, size));
+		return fctRep.findAll(PageRequest.of(page, size));
 	}
 
 	@Override
@@ -38,42 +38,42 @@ public class FactureMetierImpl implements IFactureMetier {
 
 	@Override
 	public Page<Facture> getFacturesClients(Long numDossier, int page, int size) {
-		return fctRep.findAllFacturesClients(numDossier, new PageRequest(page, size));
+		return fctRep.findAllFacturesClients(numDossier, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Facture> getFacturesFournisseurs(Long numDossier, int page, int size) {
-		return fctRep.findAllFacturesFournisseurs(numDossier, new PageRequest(page, size));
+		return fctRep.findAllFacturesFournisseurs(numDossier, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Facture> getFacturesClients(Long numDossier, Date date, int page, int size) {
-		return fctRep.findAllFacturesClients(numDossier, date, new PageRequest(page, size));
+		return fctRep.findAllFacturesClients(numDossier, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Facture> getFacturesFournisseurs(Long numDossier, Date date, int page, int size) {
-		return fctRep.findAllFacturesFournisseurs(numDossier, date, new PageRequest(page, size));
+		return fctRep.findAllFacturesFournisseurs(numDossier, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Facture> getFacturesOfClient(Long numDossier, String code, int page, int size) {
-		return fctRep.findAllFacturesOfClient(numDossier, code, new PageRequest(page, size));
+		return fctRep.findAllFacturesOfClient(numDossier, code, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Facture> getFacturesOfFournisseur(Long numDossier, String code, int page, int size) {
-		return fctRep.findAllFacturesOfFournisseur(numDossier, code, new PageRequest(page, size));
+		return fctRep.findAllFacturesOfFournisseur(numDossier, code, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Facture> getFacturesOfClient(Long numDossier, String code, Date date, int page, int size) {
-		return fctRep.findAllFacturesOfClient(numDossier, code, date, new PageRequest(page, size));
+		return fctRep.findAllFacturesOfClient(numDossier, code, date, PageRequest.of(page, size));
 	}
 
 	@Override
 	public Page<Facture> getFacturesOfFournisseur(Long numDossier, String code, Date date, int page, int size) {
-		return fctRep.findAllFacturesOfFournisseur(numDossier, code, date, new PageRequest(page, size));
+		return fctRep.findAllFacturesOfFournisseur(numDossier, code, date, PageRequest.of(page, size));
 	}
 
 	@Override

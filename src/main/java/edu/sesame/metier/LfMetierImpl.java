@@ -41,6 +41,6 @@ public class LfMetierImpl implements ILfMetier {
 
 	@Override
 	public Page<LigneFacture> getLignesFacture(Date d1, Date d2) {
-		return lnfRep.findAllBetween(d1, d2, new PageRequest(0, 10));
+		return lnfRep.findAllBetween(d1, d2, PageRequest.of(0, 10));
 	}
 }
