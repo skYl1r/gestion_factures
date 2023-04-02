@@ -458,8 +458,8 @@ function getProduit(ref)
 											<td th:text="${lf.produit.tva}"></td>  
 											<td th:text="${lf.ttc}"></td>  
 											<td>
-												<a class='btn btn-danger btn-sm' th:onClick="'removeLigne(\''+${lf.produit.ref}+'\')'"><i class='fa fa-minus text-light'></i></a> 
-												<a th:onclick="'editLigne(\''+${lf.produit.ref}+'\')'" class="btn btn-primary btn-sm text-light" ><i class="fa fa-edit"></i></a>
+												<a class='btn btn-danger btn-sm' th:data-ref="${lf.produit.ref}" th:onClick="removeLigne(this.getAttribute('data-ref'))"><i class='fa fa-minus text-light'></i></a> 
+												<a th:data-ref="${lf.produit.ref}" th:onclick="editLigne(this.getAttribute('data-ref'))" class="btn btn-primary btn-sm text-light" ><i class="fa fa-edit"></i></a>
 											</td>
 										</tr>
 									</tbody>

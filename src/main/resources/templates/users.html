@@ -166,8 +166,8 @@
 							   					</div>
 											</td> 
 											<td>
-												<a id="btnEdit" class="btn-primary btn-sm text-light"  th:onclick="'openFormulaireUpdateUser(\''+${user.username}+'\')'"><i class="fa fa-edit"></i></a>
-												<a class="btn-danger btn-sm text-light" th:onclick="'deleteVerification(\''+${user.username}+'\')'" ><i class="fa fa-remove"></i></a> 
+												<a id="btnEdit" class="btn-primary btn-sm text-light" th:data-usr="${user.username}" th:onclick="openFormulaireUpdateUser(this.getAttribute('data-usr'))"><i class="fa fa-edit"></i></a>
+												<a class="btn-danger btn-sm text-light" th:data-usr="${user.username}" th:onclick="deleteVerification(this.getAttribute('data-usr'))" ><i class="fa fa-remove"></i></a> 
 											</td>
 										</tr>
 									</tbody>
@@ -273,21 +273,6 @@
         </button>
       </div>
       	<div class="modal-body" style="max-height:400px;overflow-y:scroll"> 
-      		<!-- div>
-      			<table class="table pb-0" style="border:none"><tr>
-      				<td style="border:none">Nouveau role : </td>
-      				<td style="border:none">
-      					<input class="form-control form-control-sm" id="inputNewRole" />
-      				</td>
-      				<td style="border:none">
-	      				<a 	class="btn-sm btn-info text-light float-right" 
-							onclick="addRole();">
-							AJOUTER
-						</a>
-					</td> 
-      			<tr></table>
-      			<br>
-      		</div -->
       		<div id="alertRole" style="display:none" class="alert alert-warning mt-0">
       			<span></span>
       			<i class="fa fa-close btn-sm btn-warning float-right" 
@@ -297,22 +282,14 @@
         	<tr th:each="role:${roles}" th:id="'trRole'+${role.id}" > 
 				<td>
 					<div>
-						<a th:onclick="'showUR('+${role.id}+')'" class="fa-cog fa btn-sm btn-light"></a>
-						<!-- span class="su" style="display:none">
-							<a th:onclick="'hideUR('+${role.id}+')'" class="fa fa-close btn-sm btn-light mr-2"></a>
-							<input th:value="${role}" />
-							<a th:href="'javascript:updateRole(\''+${role.id}+'\')'"
-								class="fa fa-check btn-sm btn-primary"></a> 
-							<a th:onclick="'deleteRole('+${role.id}+')'"
-								class="fa fa-trash btn-sm btn-danger text-light"></a>
-						</span --> 
-						<span class="sr" th:text="${role.designation}"></span>
+						<span class="sr" th:text="${role.role}"></span>
 					</div>
 				</td>
-				<td th:id="'td1_'+${role.id}"></td>
 				<td th:id="'td2_'+${role.id}">
 					<a  th:id="'ba_'+${role.id}" class="btn-sm btn-success text-light float-right" 
-						th:onclick="'addUserRole(\''+${role}+'\','+${role.id}+')'">
+						th:data-role="${role.role}"
+						th:data-id="${role.id}"
+						th:onclick="addUserRole(this.getAttribute('data-role'),this.getAttribute('data-id'))">
 						<i class="fa fa-plus"></i>
 					</a>
 				</td>
@@ -326,19 +303,6 @@
 	   			</script>
       		</div>
       		</form>
-      		
-      		<script type="text/javascript">
-	      		function showUR(id){    
-	      			//$("#trRole"+id+" div>a").hide();
-	      			//$("#trRole"+id+" span[class='sr']").hide(); 
-	      			//$("#trRole"+id+" span[class='su']").show(); 
-	      		}
-	      		function hideUR(id){  
-	      			//$("#trRole"+id+" div>a").show();
-	      			//$("#trRole"+id+" span[class='sr']").show(); 
-	      			//$("#trRole"+id+" span[class='su']").hide(); 
-	      		}
-      		</script> 
 		</div>  
 		<div class="modal-footer" style="border:none"> 
         	<button class="btn btn-sm btn-secondary" data-dismiss="modal">Retour</button>

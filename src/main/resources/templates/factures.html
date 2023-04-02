@@ -69,7 +69,9 @@
 										<div class="col-md-3">  
 									      	<div class="input-group"> 
 									      		<input type="date" id="date"  th:value="${dateachat}" class="form-control form-control-sm"  
-						 							th:onchange="'location.href=\'/factures?dateachat=\'+this.value+\'&type='+${type}+'&size='+${size}+'&fournisseur='+${frs}+'&client='+${clt}+'&datevente='+${datevente}+'&pagevente='+${pageCourantVente}+'\'' "
+						 							th:data-frs="${frs}" th:data-clt="${clt}"
+						 							th:onchange="location.href='/factures?dateachat='+
+						 							this.value+'&type='+${type}+'&size='+${size}+'&fournisseur='+getAttribute('data-frs')+'&client='+getAttribute('data-clt')+'&datevente='+${datevente}+'&pagevente='+${pageCourantVente}+'\'' "
 						 						/> 
 											</div>
 								      	</div> 
@@ -80,7 +82,7 @@
 											    	<label class="col-form-label col-form-label-sm input-group-text " style="padding:0" for="fournisseur">Fournisseur</label>
 											  	</div> 
 												<select id="fournisseur" class="custom-select  form-control-sm"   
-													th:onchange="'location.href=\'/factures?fournisseur=\'+this.value+\'&type='+${type}+'&size='+${size}+'&dateachat='+${dateachat}+'&client='+${clt}+'&datevente='+${datevente}+'&pagevente='+${pageCourantVente}+'\'' ">
+													th:onchange="'location.href=\'/factures?fournisseur=\'+this.value+\'&type='+${type}+'&size='+${size}+'&dateachat='+${dateachat}+'&client='+getAttribute('data-clt')+'&datevente='+${datevente}+'&pagevente='+${pageCourantVente}+'\'' ">
 									      			<option value="">Tous</option> 
 									      			<option th:selected="${frs}==${fournisseur.code}" th:each="fournisseur:${fournisseurs}" th:value="${fournisseur.code}" th:text="${fournisseur.code}+' ('+${fournisseur.nom}+')'"></option>
 									      		</select>
@@ -122,6 +124,7 @@
 							          	<ul class="pagination bg-dark" style="border-radius:0;">
 											<li th:each="pa,status:${pagesAchat}" class="nav-item">
 												<a 	th:class="${status.index}==${pageCourantAchat}?'alert-secondary nav-link ':'nav-link '" 
+													th:data-frs="${frs}" th:data-clt="${clt}"
 													th:href="@{factures(pageachat=${status.index},pagevente=${pageCourantVente},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente})}" th:text="${status.index}+1"></a>
 											</li>
 										</ul> 
@@ -142,7 +145,7 @@
 										<div class="col-md-3">  
 									      	<div class="input-group"> 
 									      		<input type="date" id="date"  th:value="${datevente}" class="form-control form-control-sm"  
-													th:onchange="'location.href=\'/factures?datevente=\'+this.value+\'&type='+${type}+'&size='+${size}+'&fournisseur='+${frs}+'&client='+${clt}+'&dateachat='+${dateachat}+'&pageachat='+${pageCourantAchat}+'\'' "
+													th:data-frs="${frs}" th:data-clt="${clt}" th:onchange="'location.href=\'/factures?datevente=\'+this.value+\'&type='+${type}+'&size='+${size}+'&fournisseur='+getAttribute('data-frs')+'&client='+getAttribute('data-clt')+'&dateachat='+${dateachat}+'&pageachat='+${pageCourantAchat}+'\'' "
 												/> 
 											</div>
 								      	</div> 
@@ -153,7 +156,7 @@
 											    	<label class="col-form-label col-form-label-sm input-group-text " style="padding:0" for="fournisseur">Client</label>
 											  	</div> 
 												<select  class="form-control form-control-sm col-auto"
-													 name="client" th:onchange="'location.href=\'/factures?client=\'+this.value+\'&type='+${type}+'&size='+${size}+'&datevente='+${datevente}+'&fournisseur='+${frs}+'&dateachat='+${dateachat}+'&pageachat='+${pageCourantAchat}+'\'' "> 
+													 name="client" th:data-frs="${frs}" th:data-clt="${clt}" th:onchange="'location.href=\'/factures?client=\'+this.value+\'&type='+${type}+'&size='+${size}+'&datevente='+${datevente}+'&fournisseur='+getAttribute('data-frs')+'&dateachat='+${dateachat}+'&pageachat='+${pageCourantAchat}+'\'' "> 
 										      		<option  value="">Tous</option>
 										      		<option th:selected="${clt}==${client.code}" th:each="client:${clients}" th:value="${client.code}" th:text="${client.code}+' ('+${client.nom}+' '+${client.prenom}+')'"></option>
 										      	</select>
@@ -197,7 +200,7 @@
 							          	<ul class="pagination bg-dark" style="border-radius:0">
 											<li th:each="pa,status:${pagesVente}" class="nav-item">
 												<a 	th:class="${status.index}==${pageCourantVente}?'alert-secondary nav-link ':'nav-link '" 
-													th:href="@{factures(pagevente=${status.index},pageachat=${pageCourantAchat},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente})}" th:text="${status.index}+1"></a>
+													th:data-frs="${frs}" th:data-clt="${clt}" th:href="@{factures(pagevente=${status.index},pageachat=${pageCourantAchat},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente})}" th:text="${status.index}+1"></a>
 											</li>
 										</ul> 
 							       	</div>

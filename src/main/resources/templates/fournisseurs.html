@@ -232,7 +232,7 @@
 											<td th:text="${frs.fax}"></td>
 											<td sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_UPDATE_FOURNISSEURS')">
 												<a class="btn-danger btn-sm"  th:href="@{/fournisseurs/delete(code=${frs.code})}" ><i class="fa fa-remove"></i></a>
-												<a id="btnEdit" class="btn-primary btn-sm text-light"  th:onclick="'openNavFormulaireUpdateFournisseur(\''+${frs.code}+'\')'"><i class="fa fa-edit"></i></a>
+												<a id="btnEdit" class="btn-primary btn-sm text-light"  th:data-code="${frs.code}" th:onclick="openNavFormulaireUpdateFournisseur(this.getAttribute('data-code'))"><i class="fa fa-edit"></i></a>
 											</td>
 										</tr>
 									</tbody>

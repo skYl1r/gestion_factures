@@ -221,17 +221,17 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="frs:${clients}" th:id="'tr'+${frs.code}">
-											<td th:text="${frs.code}"></td>
-											<td th:text="${frs.nom}"></td>
-											<td th:text="${frs.prenom}"></td>
-											<td th:text="${frs.age}"></td>
-											<td th:text="${frs.adresse}"></td>
-											<td th:text="${frs.email}"></td>
-											<td th:text="${frs.tel}"></td> 
+										<tr th:each="clt:${clients}" th:id="'tr'+${clt.code}">
+											<td th:text="${clt.code}"></td>
+											<td th:text="${clt.nom}"></td>
+											<td th:text="${clt.prenom}"></td>
+											<td th:text="${clt.age}"></td>
+											<td th:text="${clt.adresse}"></td>
+											<td th:text="${clt.email}"></td>
+											<td th:text="${clt.tel}"></td> 
 											<td  sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_UPDATE_CLIENTS')">
-												<a class="btn-danger btn-sm"  th:href="@{clients/delete(code=${frs.code})}" ><i class="fa fa-remove"></i></a>
-												<a id="btnEdit" class="btn-primary btn-sm text-light"  th:onclick="'openNavFormulaireUpdateClient(\''+${frs.code}+'\')'"><i class="fa fa-edit"></i></a>
+												<a class="btn-danger btn-sm"  th:data-clt="${clt.code}" th:href="@{clients/delete(code='this.getAttribute(\'data-clt\')')}" ><i class="fa fa-remove"></i></a>
+												<a id="btnEdit" class="btn-primary btn-sm text-light" th:data-clt="${clt.code}" th:onclick="openNavFormulaireUpdateClient(this.getAttribute('data-clt'))"><i class="fa fa-edit"></i></a>
 											</td>
 										</tr>
 									</tbody>

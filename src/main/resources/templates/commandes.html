@@ -68,8 +68,12 @@
 											<div class="col-md-3">  
 										      	<div class="input-group"> 
 										      		<input type="date" id="date"  th:value="${dateachat}" class="form-control form-control-sm"  
-							 							th:onchange="'location.href=\'/commandes?dateachat=\'+this.value+\'&type='+${type}+'&size='+${size}+'&fournisseur='+${frs}+'&client='+${clt}+'&datevente='+${datevente}+'&valideachat='+${valideachat}+'&validevente='+${validevente}+'&pagevente='+${pageCourantVente}+'\'' "
-							 						/> 
+							 							th:data-frs="${frs}" th:data-clt="${clt}" th:onchange="location.href='/commandes?dateachat='+
+							 								this.value + '&type=' + ${type} + '&size=' + ${size} +
+							 								'&fournisseur=' + this.getAttribute('data-frs') +
+							 								'&client='+ this.getAttribute('data-clt') + '&datevente=' + ${datevente} +
+							 								'&valideachat=' + ${valideachat} + '&validevente=' + ${validevente} +
+							 								'&pagevente=' + ${pageCourantVente}"/> 
 												</div>
 									      	</div> 
 											
@@ -79,7 +83,11 @@
 												    	<label class="col-form-label col-form-label-sm input-group-text " style="padding:0" for="fournisseur">Fournisseur</label>
 												  	</div> 
 													<select id="fournisseur" class="custom-select  form-control-sm"   
-														th:onchange="'location.href=\'/commandes?fournisseur=\'+this.value+\'&type='+${type}+'&size='+${size}+'&dateachat='+${dateachat}+'&client='+${clt}+'&valideachat='+${valideachat}+'&validevente='+${validevente}+'&datevente='+${datevente}+'&pagevente='+${pageCourantVente}+'\'' ">
+														th:data-clt="${clt}" th:onchange="location.href='/commandes?fournisseur=' +
+														this.value + '&type=' + ${type} + '&size=' + ${size} +
+														'&dateachat=' + ${dateachat} + '&client=' + this.getAttribute('data-clt') +
+														'&valideachat=' + ${valideachat} + '&validevente=' + ${validevente} +
+														'&datevente=' + ${datevente} + '&pagevente=' + ${pageCourantVente}">
 										      			<option value="">Tous</option> 
 										      			<option th:selected="${frs}==${fournisseur.code}" th:each="fournisseur:${fournisseurs}" th:value="${fournisseur.code}" th:text="${fournisseur.code}+' ('+${fournisseur.nom}+')'"></option>
 										      		</select>
@@ -92,7 +100,12 @@
 												    	<label class="input-group-text  col-form-label-sm  " style="padding:0" for="validite">Validité</label>
 												  	</div>  
 										      		<select id="validite" class="custom-select  form-control-sm"  
-														th:onchange="'location.href=\'/commandes?valideachat=\'+this.value+\'&type='+${type}+'&size='+${size}+'&datevente='+${datevente}+'&client='+${clt}+'&validevente='+${validevente}+'&dateachat='+${dateachat}+'&fournisseur='+${frs}+'&pagevente='+${pageCourantVente}+'\'' ">
+														th:data-frs="${frs}" th:data-clt="${clt}" th:onchange="location.href='/commandes?valideachat=' +
+														this.value +'&type=' +${type} + '&size=' + ${size} +
+														'&datevente=' + ${datevente} + '&client='+ this.getAttribute('data-clt') +
+														'&validevente=' + ${validevente} + '&dateachat=' + ${dateachat} +
+														'&fournisseur=' + this.getAttribute('data-frs') +
+														'&pagevente=' + ${pageCourantVente}">
 											      		<option value="-1" th:selected="${valideachat}=='-1'">Tous</option> 
 											      		<option th:selected="${valideachat}=='1'" value="1" >VALIDE</option>
 											      		<option th:selected="${valideachat}=='0'" value="0" >NON VALIDE</option>
@@ -138,7 +151,12 @@
 								          	<ul class="pagination bg-dark" style="border-radius:0;">
 												<li th:each="pa,status:${pagesAchat}" class="nav-item">
 													<a 	th:class="${status.index}==${pageCourantAchat}?'alert-secondary nav-link ':'nav-link '" 
-														th:href="@{commandes(pageachat=${status.index},pagevente=${pageCourantVente},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente},validevente=${validevente},valideachat=${valideachat})}" th:text="${status.index}+1"></a>
+														th:data-frs="${frs}" th:data-clt="${clt}" 
+														th:href="@{/commandes(pageachat=${status.index},pagevente=${pageCourantVente},
+														size=${size},type=${type},client=${clt},
+														fournisseur=${frs},dateachat=${dateachat},
+														datevente=${datevente},validevente=${validevente},
+														valideachat=${valideachat})}" th:text="${status.index}+1"></a>
 												</li>
 											</ul> 
 							           	</div>
@@ -159,8 +177,12 @@
 										<div class="col-md-3">  
 									      	<div class="input-group"> 
 									      		<input type="date" id="date"  th:value="${datevente}" class="form-control form-control-sm"  
-													th:onchange="'location.href=\'/commandes?datevente=\'+this.value+\'&type='+${type}+'&size='+${size}+'&fournisseur='+${frs}+'&client='+${clt}+'&valideachat='+${valideachat}+'&validevente='+${validevente}+'&dateachat='+${dateachat}+'&pageachat='+${pageCourantAchat}+'\'' "
-												/> 
+													th:data-frs="${frs}" th:data-clt="${clt}" th:onchange="location.href='/commandes?datevente='+
+													this.value + '&type=' + ${type} + '&size=' + ${size}+
+													'&fournisseur='+ this.getAttribute('data-frs') +
+													'&client=' + this.getAttribute('data-clt') +'&valideachat=' + ${valideachat}+
+													'&validevente=' + ${validevente} + '&dateachat=' + ${dateachat}+
+													'&pageachat=' + ${pageCourantAchat}" /> 
 											</div>
 								      	</div> 
 										
@@ -170,7 +192,11 @@
 											    	<label class="col-form-label col-form-label-sm input-group-text " style="padding:0" for="fournisseur">Client</label>
 											  	</div> 
 												<select  class="form-control form-control-sm col-auto"
-													 name="client" th:onchange="'location.href=\'/commandes?client=\'+this.value+\'&type='+${type}+'&size='+${size}+'&datevente='+${datevente}+'&fournisseur='+${frs}+'&valideachat='+${valideachat}+'&validevente='+${validevente}+'&dateachat='+${dateachat}+'&pageachat='+${pageCourantAchat}+'\'' "> 
+													 name="client" th:data-frs="${frs}" th:onchange="location.href='/commandes?client='+
+													 this.value + '&type=' + ${type} + '&size=' + ${size} +
+													 '&datevente=' + ${datevente} + '&fournisseur=' + this.getAttribute('data-frs')+
+													 '&valideachat=' + ${valideachat} + '&validevente=' + ${validevente}+
+													 '&dateachat=' + ${dateachat} + '&pageachat=' + ${pageCourantAchat}" > 
 										      		<option  value="">Tous</option>
 										      		<option th:selected="${clt}==${client.code}" th:each="client:${clients}" th:value="${client.code}" th:text="${client.code}+' ('+${client.nom}+' '+${client.prenom}+')'"></option>
 										      	</select>
@@ -183,7 +209,12 @@
 											    	<label class="input-group-text  col-form-label-sm  " style="padding:0" for="validite">Validité</label>
 											  	</div>  
 									      		<select id="validite" class="custom-select  form-control-sm"  
-													th:onchange="'location.href=\'/commandes?validevente=\'+this.value+\'&type='+${type}+'&size='+${size}+'&datevente='+${datevente}+'&client='+${clt}+'&valideachat='+${valideachat}+'&dateachat='+${dateachat}+'&fournisseur='+${frs}+'&pageachat='+${pageCourantAchat}+'\'' ">
+													th:data-frs="${frs}" th:data-clt="${clt}" th:onchange="location.href='/commandes?validevente='+
+													this.value + '&type=' + ${type} + '&size=' + ${size} +
+													'&datevente=' + ${datevente} + '&client=' + this.getAttribute('data-clt') +
+													'&valideachat=' + ${valideachat} + '&dateachat=' + ${dateachat} +
+													'&fournisseur=' + this.getAttribute('data-frs') +
+													'&pageachat=' + ${pageCourantAchat}" >
 										      		<option value="-1" th:selected="${validevente}=='-1'">Tous</option> 
 										      		<option  value="1" th:selected="${validevente}=='1'">VALIDE</option>
 										      		<option  value="0" th:selected="${validevente}=='0'">NON VALIDE</option>
@@ -232,7 +263,13 @@
 							          	<ul class="pagination bg-dark" style="border-radius:0">
 											<li th:each="pa,status:${pagesVente}" class="nav-item">
 												<a 	th:class="${status.index}==${pageCourantVente}?'alert-secondary nav-link ':'nav-link '" 
-													th:href="@{commandes(pagevente=${status.index},pageachat=${pageCourantAchat},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente},validevente=${validevente},valideachat=${valideachat})}" th:text="${status.index}+1"></a>
+													th:data-frs="${frs}" th:data-clt="${clt}" 
+													th:href="@{/commandes(pagevente=${status.index},pageachat=${pageCourantAchat},
+													size=${size},type=${type},
+													client=${clt},fournisseur=${frs},
+													dateachat=${dateachat},datevente=${datevente},validevente=${validevente},
+													valideachat=${valideachat})}" th:text="${status.index}+1"
+													onclick = "" ></a>
 											</li>
 										</ul> 
 							       	</div>
