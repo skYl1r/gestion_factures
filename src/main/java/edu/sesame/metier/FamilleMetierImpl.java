@@ -33,12 +33,7 @@ public class FamilleMetierImpl implements IFamilleMetier {
 
 	@Override
 	public Famille getFamille(Long code) {
-		try {
-			Famille f = fmlRep.findById(code).get();
-			return f;
-		} catch (Exception e) {
-			return null;
-		}
+		return fmlRep.findById(code).get();
 	}
 
 	@Override
