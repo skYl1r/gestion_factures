@@ -1,6 +1,7 @@
 package edu.sesame.metier;
 
 import java.util.List;
+import java.util.Objects;
 
 import javax.transaction.Transactional;
 

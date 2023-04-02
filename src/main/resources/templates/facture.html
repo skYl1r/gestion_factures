@@ -67,12 +67,12 @@
 										
 										<tr>
 											<th>Total : </th>
-											<td th:text="${#numbers.formatDecimal(facture.total, 0, 'DEFAULT', 2, 'DEFAULT')}+' MAD'"></td>
+											<td th:text="${#numbers.formatDecimal(facture.total, 0, 'DEFAULT', 2, 'DEFAULT')}+' DT'"></td>
 										</tr> 
 										
 										<tr>
 											<th>Total TTC: </th>
-											<td th:text="${#numbers.formatDecimal(facture.ttc, 0, 'DEFAULT', 2, 'DEFAULT')}+' MAD'"></td>
+											<td th:text="${#numbers.formatDecimal(facture.ttc, 0, 'DEFAULT', 2, 'DEFAULT')}+' DT'"></td>
 										</tr> 
 									</table>
 					            </div>

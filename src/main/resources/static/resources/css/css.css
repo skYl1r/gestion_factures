@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
 }
+
 .wrapper {
   min-height: 100%;
 
@@ -9,6 +10,7 @@ html, body {
   /* But also accounting for potential margin-bottom of last child */
   margin-bottom: -90px;
 }
+
 .footer,
 .push { 
   height: 90px;
@@ -87,13 +89,16 @@ html, body {
 	.bgsidenav1 a{color:#111;}
 	
 	.bgsidenav1{ 
-		background-repeat:repeat-x;
-        background-image:linear-gradient(#D5D4De,#D5D4De 1000px);
+		/*background-repeat:repeat-x;
+        background-image:linear-gradient(#D5D4De,#D5D4De 1000px);*/
+        background-color: white;
 	    border-right:solid #888; 
 	}
+	
+	
 	.sidenav {
 	    height: 100%;
-	    width: 0;
+		width:260px;
 	    position: fixed;
 	    z-index: 1;
 	    top: 0;

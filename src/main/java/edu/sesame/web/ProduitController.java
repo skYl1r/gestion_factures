@@ -50,8 +50,8 @@ public class ProduitController {
 
 	@RequestMapping(value = { "/produits/add" }, method = RequestMethod.POST)
 	public String addProduit(@Valid Produit produit, BindingResult result, Model model) {
-		metierProduit.getProduit(produit.getRef());
-		if (metierProduit.getProduit(produit.getRef()) == null) {
+		Produit p = metierProduit.getProduit(produit.getRef());
+		if (p == null) {
 			if (saveProduit(produit, result, model))
 				model.addAttribute("addOk", "Produit ajouté !");
 			else

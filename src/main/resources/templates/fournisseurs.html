@@ -204,7 +204,6 @@
 					           <table class="table table-hover">
 									<thead>
 										<tr>
-											<th></th>
 											<th>Code</th>
 											<th>Nom</th>
 											<th>Adresse</th>
@@ -223,7 +222,6 @@
 									</thead>
 									<tbody>
 										<tr th:each="frs:${fournisseurs}" th:id="'tr'+${frs.code}">
-											<td><img alt="" th:src="@{'../img/'+${frs.code}+'.png'}"  style="width:45px;height:45px" ></td>
 											<td th:text="${frs.code}"></td>
 											<td th:text="${frs.nom}"></td>
 											<td th:text="${frs.adresse}"></td>

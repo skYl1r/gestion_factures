@@ -234,9 +234,9 @@ function createCharts(data, nom,subnom,idDiv, type)
 			    "caption": "Resultats des operations d'achats/ventes",
 			    "subcaption": ""+new Date().getFullYear(),
 			    "xaxisname": "Mois",
-			    "yaxisname": "Total TTC(MAD)",
+			    "yaxisname": "Total TTC(DT)",
 			    "formatnumberscale": "1",
-			    "plottooltext": "<b>$dataValue</b> MAD d'<b>$seriesName</b> en $label",
+			    "plottooltext": "<b>$dataValue</b> DT d'<b>$seriesName</b> en $label",
 			    "theme": "fusion",
 			    "drawcrossline": "1",
 
@@ -293,7 +293,7 @@ function createStocksCharts(data, nom,subnom,idDiv, type)
 			  "chart": {
 				  "caption": nom, 
 				    "xaxisname": "Mois",
-				    "yaxisname": "Total TTC(MAD)",
+				    "yaxisname": "Total TTC(DT)",
 				    "formatnumberscale": "1",
 				    "plottooltext": "<b>$dataValue</b> produits de <b>$seriesName</b> en $label",
 				    "theme": "fusion",
@@ -415,7 +415,7 @@ function getStatistiquesGlobal()
 		dataType : "json",  
 		success : function( data ) {  
 			//console.log((data));
-			createCharts(data, "REVENUES", "Ventes/Achats", 'divStatistique',"Revenues(MAD)" );  
+			createCharts(data, "REVENUES", "Ventes/Achats", 'divStatistique',"Revenues(DT)" );  
 		},
 		error : function( xhr, status ) { alert("Erreur dans le serveur..."); } 
 	});
