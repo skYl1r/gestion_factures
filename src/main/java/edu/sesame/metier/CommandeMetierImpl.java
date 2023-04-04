@@ -61,7 +61,7 @@ public class CommandeMetierImpl implements ICommandeMetier {
 
 	@Override
 	public Commande getCommande(Long num) {
-		return cmdRep.getOne(num);
+		return cmdRep.findById(num).orElse(null);
 	}
 
 	@Override

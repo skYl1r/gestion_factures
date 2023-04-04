@@ -36,7 +36,7 @@ public class TvaMetierImpl implements ITvaMetier {
 
 	@Override
 	public Tva getTva(Long code) {
-		return tvaRep.findById(code).get();
+		return tvaRep.findById(code).orElse(null);
 	}
 
 	@Override
