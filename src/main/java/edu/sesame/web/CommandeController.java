@@ -61,7 +61,7 @@ public class CommandeController {
 		if (!num.isEmpty()) {
 			Commande cmd = metierCommande.getCommande(Long.valueOf(num));
 			if (cmd != null) {
-				if (((Dossier) session.getAttribute("dossier")).getNumero() != cmd.getNumero())
+				if (((Dossier) session.getAttribute("dossier")).getNumero() != cmd.getDossier().getNumero())
 					;
 				else if (cmd.getClient() != null) {
 					model.addAttribute("commandesVente", new Commande[] { cmd });

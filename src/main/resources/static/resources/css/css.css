@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
 }
+
 .wrapper {
   min-height: 100%;
 
@@ -9,11 +10,20 @@ html, body {
   /* But also accounting for potential margin-bottom of last child */
   margin-bottom: -90px;
 }
+
 .footer,
 .push { 
   height: 90px;
 }
 
+.footer{
+	display: flex;
+}
+
+.footer-div{
+	margin: 0 auto;
+	display: inline-block;
+}
 
 
 /* width */
@@ -35,7 +45,6 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
     background: #555; 
 }
-
 
 .fa-angle-down{color:aqua;}
 #containerFolders img, .icon{ width: 60px; }
@@ -63,11 +72,11 @@ html, body {
 }
 
 
-	.card-header{background:linear-gradient(0deg, #DDD, #FFF); color:black; }
-	.card-bottom{background:linear-gradient(0deg, #DDD, #FFF); color:black; border-top:solid 0.02em #DDD;}
+	.card-header{background:#B4AAA9; color:black; }
+	.card-bottom{background-color:white; border-top:solid 0.02em #DDD;}
 	
-	.card-header0{background:linear-gradient(0deg, #343a40, #898d95); color:white; }
-	.card-bottom0{background:linear-gradient(0deg, #898d95, #343a40); color:white; border-top:solid 0.02em gray; }
+	.card-header0{background:#898d95; color:white; }
+	.card-bottom0{background:#343a40; color:white; border-top:solid 0.02em gray; }
 	.card-header0 a{color:white} 
 	.card-header1 a{color:black} 
 	.card-bottom0 a{color:white} 
@@ -87,13 +96,16 @@ html, body {
 	.bgsidenav1 a{color:#111;}
 	
 	.bgsidenav1{ 
-		background-repeat:repeat-x;
-        background-image:linear-gradient(#D5D4De,#D5D4De 1000px);
+		/*background-repeat:repeat-x;
+        background-image:linear-gradient(#D5D4De,#D5D4De 1000px);*/
+        background-color: #FFF0DF;
 	    border-right:solid #888; 
 	}
+	
+	
 	.sidenav {
 	    height: 100%;
-	    width: 0;
+		width:260px;
 	    position: fixed;
 	    z-index: 1;
 	    top: 0;
@@ -138,7 +150,8 @@ html, body {
 	 
 	.container-fluid{padding:0} 
 	{#listeArticles,#listeFournisseurs,#listeClients} table{border:solid 0.01em #ccF}
-	.card-body{padding:0; border-radius: 0; } 
+	.card-body{padding:0; border-radius: 0;}
+	.card-body-light{background:#FFF0DF}
 	.card{border-radius:3px;   } 
 	.row{margin:0;} 
 	.table{margin:0; }
@@ -263,5 +276,5 @@ html, body {
 	 
 
 		.montheme{}
-		.titlemenu{font-weight: bolder; color:#22A;} 
+		.titlemenu{font-weight: bolder; color:#ffa101;} 
 		.myborder{ border-left:solid #55D 0.01em;}

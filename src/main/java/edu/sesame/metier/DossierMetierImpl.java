@@ -33,7 +33,7 @@ public class DossierMetierImpl implements IDossierMetier {
 
 	@Override
 	public boolean deleteDossier(Long num) {
-		Dossier dos = dosRep.getOne(num);
+		Dossier dos = dosRep.findById(num).orElse(null);
 		if (dos == null)
 			return false;
 		dosRep.delete(dos);

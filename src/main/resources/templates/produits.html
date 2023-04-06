@@ -176,7 +176,7 @@
 										      <td><b>TVA</b></td>
 										      	<td class="input-group">
 										        	<select id="listeTvasNouveauArticle" name="tva" class="custom-select" aria-label="Example select with button addon">
-										        		<option th:each="tva:${tvas}" th:text="${tva.designation}+' : '+${tva}+'%'" th:value="${tva.code}">
+										        		<option th:each="tva:${tvas}" th:text="${tva.designation}+' : '+${tva.taux}+'%'" th:value="${tva.code}">
 										        		
 										        		</option>
 										        	</select> 
@@ -240,7 +240,7 @@
 											</td-->
 											<td sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_UPDATE_PRODUITS')">
 												<a class=" btn-danger btn-sm"  th:href="@{/produits/delete(ref=${p.ref})}" ><i class="fa fa-remove"></i></a>
-												<a id="btnEdit" class=" btn-primary btn-sm text-light"  th:onclick="'openNavFormulaireUpdateProduit(\''+${p.ref}+'\')'"><i class="fa fa-edit"></i></a>
+												<a id="btnEdit" class=" btn-primary btn-sm text-light"  th:data-ref="${p.ref}" th:onclick="openNavFormulaireUpdateProduit(this.getAttribute('data-ref'))"><i class="fa fa-edit"></i></a>
 											</td>
 										</tr>
 									</tbody>
@@ -250,7 +250,7 @@
 					          	<ul class="pagination bg-dark">
 									<li th:each="pa,status:${pages}" class="nav-item">
 										<a 	th:class="${status.index}==${pageCourant}?'alert-info nav-link ':'nav-link '" 
-											th:href="@{produits(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}+1"></a>
+											th:href="@{/produits(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}+1"></a>
 									</li>
 								</ul> 
 				           	</div>

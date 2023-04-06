@@ -40,6 +40,7 @@
 			$(".titlemenu").addClass("text-info");
 			$(".card .card-header").addClass("card-header0");
 			$(".montheme .card ").addClass("text-light bg-dark");
+			$(".card-body").removeClass("card-body-light");
 		}
 		else {
 			$(".montheme").removeClass("bg-dark");
@@ -52,5 +53,6 @@
 			$(".titlemenu").removeClass("text-info");
 			$(".card .card-header").removeClass("card-header0");
 			$(".montheme .card ").removeClass("text-light bg-dark");
+			$(".card-body").addClass("card-body-light");
 		}
 	}

@@ -24,7 +24,7 @@
 	<input type="hidden" th:value="@{/}" id="globalpath" />
 	<script th:src="@{/resources/js/js.js}"></script> 
 	
-  	<div id="mySidenav" class=" pt-4 sidenav bgsidenav" style="width:260px">  
+  	<div id="mySidenav" class=" pt-4 sidenav bgsidenav">  
   		<!-- a href="javascript:void(0)" class="fix-tr" onclick="closeNav()" style="border:none;">
   		<i class="fa fa-arrow-circle-left fa-2x"></i>
   		</a-->
@@ -52,7 +52,7 @@
 			Documents
 		</div> 
 		<div class="ml-3 mt-0 myborder"> 
-			<a class="nav-link" th:href="@{/statistiques}"><i class="fa fa-line-chart"></i> Statistiques</a>
+			<a class="nav-link" th:href="@{/statistiques}"><i class="fa fa-line-chart"></i> <span>Statistiques</span></a>
 			<a class="nav-link" th:href="@{/dossiers}"><i 	class="fa fa-folder" ></i>&nbsp;Dossiers</a>  
 	      	 
 	      	<a href="#" class="nav-link" data-toggle="collapse" data-target="#menuCommandes">
@@ -60,14 +60,8 @@
 	      		<i class="float-right fa fa-angle-down"></i>
 	      	</a> 
 	       	<div class="collapse mb-2" id="menuCommandes">
-			    <a class="nav-link" th:href="@{/commandes?type=achat}">
-			    <i class="fa fa-arrow-left"></i> Achats</a>
-			    <a class="nav-link" th:href="@{/commandes?type=vente}">
-			    <i class="fa fa-arrow-right"></i> Ventes</a>
 			    <a class="nav-link" th:href="@{/commandes}">
-			    <i class="fa fa-exchange"></i> Tous</a>
-			    <a class="nav-link" th:href="@{/nouveaucommande}">
-			    <i class="fa fa-plus-circle"></i> Nouveau</a>
+			    <i class="fa fa-exchange"></i> Achats/Ventes</a>
 			</div>
 		     
 	      	<a href="#" class="nav-link" data-toggle="collapse" data-target="#menuFacts">
@@ -81,8 +75,6 @@
 			    <i class="fa fa-arrow-right"></i> Ventes</a>
 			    <a class="nav-link" th:href="@{/factures}">
 			    <i class="fa fa-exchange"></i> Tous</a>
-			    <a class="nav-link" th:href="@{/nouveaufacture}">
-			    <i class="fa fa-plus-circle"></i> Nouveau</a>
 			</div>
 		</div>	
 		
@@ -90,7 +82,7 @@
 			  			
 		<div class=" col  ml-1 p-0  mt-3 titlemenu">
 			<span class="border border-primary" style="border-radius:100%;padding:0 1px 2px 4px">
-				<i class="fa fa-cogs"></i></span> Parametres</div>
+				<i class="fa fa-cogs"></i></span> Parameters</div>
   		<div class=" ml-3 myborder ">
 			<a class="nav-link" th:href="@{/produits}"><i 	class="fa fa-gift" ></i>&nbsp;Produits</a>
 			<a class="nav-link" th:href="@{/fournisseurs}"><i class="fa fa-truck"></i>&nbsp;Fournisseurs</a>  
@@ -104,8 +96,8 @@
 			<a class="nav-link" th:href="@{/masociete}"><i 	class="fa fa-info-circle" ></i>&nbsp;Informations</a>
 		 
 			    <a class="nav-link" th:href="@{/users}"><i class="fa fa-user"></i> Utilisateurs</a> 
-			    <div class="ml-2"><a class="nav-link ml-5 pl-0" th:href="@{/roles}">
-			    	<i class="fa fa-tasks"></i> Permissions</a></div> 
+			    <a class="nav-link" th:href="@{/roles}">
+			    	<i class="fa fa-tasks"></i> Permissions</a>
 		</div>
 	</div>
 
@@ -180,7 +172,7 @@
     	<div class="push"></div>
 	</div> 
 	<footer class="footer card-bottom "> 
-			<div class="alert mb-0" style="border-radius: 0"  th:if="${session.maSociete}">
+			<div class="footer-div alert" style="border-radius: 0;"  th:if="${session.maSociete}">
 				 
 						<img id="logo" style="width:140px" alt="LOGO" th:src="@{/resources/img/1.png}" />
 					  

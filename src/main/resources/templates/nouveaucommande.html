@@ -11,7 +11,7 @@ $(document).ready(function() {
     $("#formStoreLc").submit(function(e){  
         e.preventDefault();
         var ref = document.formStoreLc.produit.value;
-        var nom = $("#formStoreLc option[value="+ref+"]").text();
+        var nom = $("#formStoreLc option[value='"+ref+"']").text();
         var qte = document.formStoreLc.qte.value;
         var prx = document.formStoreLc.prix.value;
        	$.ajax({
@@ -231,7 +231,7 @@ function showActor(i)
 												<div  class="input-group">
 												<input placeholder="prix" name="prix" id="prix" class="form-control" readonly="1">
 												<div class="input-group-append">
-													<span  class="input-group-text">MAD</span>
+													<span  class="input-group-text">DT</span>
 												</div>
 												</div>
 											</td>
@@ -266,8 +266,8 @@ function showActor(i)
 											<td th:text="${ligne.produit.prix}"></td> 
 											<td th:text="${ligne.qte}"></td>  
 											<td>
-												<a class='btn btn-danger btn-sm' th:onClick="'removeLigne(\''+${ligne.produit.ref}+'\')'"><i class='fa fa-minus'></i></a>
-												<a th:onclick="'editLigne(\''+${ligne.produit.ref}+'\')'" class="btn btn-primary btn-sm text-light" ><i class="fa fa-edit"></i></a>
+												<a class='btn btn-danger btn-sm' th:data-ref="${ligne.produit.ref}" th:onClick="removeLigne(this.getAttribute('data-ref'))"><i class='fa fa-minus'></i></a>
+												<a th:data-ref="${ligne.produit.ref}" th:onclick="editLigne(this.getAttribute('data-ref'))" class="btn btn-primary btn-sm text-light" ><i class="fa fa-edit"></i></a>
 											</td>
 										</tr>
 									</tbody>

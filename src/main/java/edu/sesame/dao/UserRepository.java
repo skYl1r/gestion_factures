@@ -14,6 +14,6 @@ public interface UserRepository extends JpaRepository<User, String> {
 	@Query("select u from User u where u.username = :x")
 	public User findByUserName(@Param("x") String username);
 
-	@Query("select u from User u where u.username like :x order by username")
+	@Query("select u from User u where u.username like %:x% order by username")
 	public Page<User> findAllByMotCle(@Param("x") String motCle, Pageable pageable);
 }

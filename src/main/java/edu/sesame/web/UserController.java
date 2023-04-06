@@ -3,6 +3,7 @@ package edu.sesame.web;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -42,7 +43,12 @@ public class UserController {
 	public String index(Model model, @RequestParam(name = "p", defaultValue = "0") int p,
 			@RequestParam(name = "s", defaultValue = "8") int s,
 			@RequestParam(name = "mc", defaultValue = "") String mc) {
-		Page<User> users = usrRep.findAll(PageRequest.of(p, s));
+		Page<User> users;
+		if(Objects.nonNull(mc) && !mc.isEmpty()) {
+			users = usrRep.findAllByMotCle(mc, PageRequest.of(p, s));
+		}else {
+			users = usrRep.findAll(PageRequest.of(p, s));
+		}
 		model.addAttribute("users", users.getContent());
 
 		model.addAttribute("pages", new int[users.getTotalPages()]);
@@ -201,6 +207,7 @@ public class UserController {
 		if (des.length() <= 2)
 			m.addAttribute("updateDes", "la designation doit etre au minimum 3c.");
 		if (r != null && des.length() > 2) {
+			r.setDesignation(des);
 			rolRep.save(r);
 			m.addAttribute("updateDesOk", "Designation est modifié !");
 		}

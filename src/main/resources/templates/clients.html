@@ -77,6 +77,9 @@
 				<div class="card-body p-4" >
 				
 					<div class="col">
+						<div th:if="${dejaExist}" class="alert alert-danger text-danger h5" >
+							Le Client est déja existant !
+						</div>
 						<div class="alert alert-success text-success" th:if="${updateOk}" th:text="${updateOk}"></div>
 						<div class="alert alert-success text-primary" th:if="${addOk}" th:text="${addOk}"></div>
 						<div class="alert alert-danger text-danger" th:if="${deleteOk}" th:text="${deleteOk}"></div>
@@ -203,7 +206,7 @@
 					           <table class="table table-hover">
 									<thead>
 										<tr>
-											<th></th>
+							
 											<th>Code</th>
 											<th>Nom</th>
 											<th>Prénom</th>
@@ -221,18 +224,17 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr th:each="frs:${clients}" th:id="'tr'+${frs.code}">
-											<td><img alt="" th:src="@{'../img/'+${frs.code}+'.png'}"  style="width:45px;height:45px" ></td>
-											<td th:text="${frs.code}"></td>
-											<td th:text="${frs.nom}"></td>
-											<td th:text="${frs.prenom}"></td>
-											<td th:text="${frs.age}"></td>
-											<td th:text="${frs.adresse}"></td>
-											<td th:text="${frs.email}"></td>
-											<td th:text="${frs.tel}"></td> 
+										<tr th:each="clt:${clients}" th:id="'tr'+${clt.code}">
+											<td th:text="${clt.code}"></td>
+											<td th:text="${clt.nom}"></td>
+											<td th:text="${clt.prenom}"></td>
+											<td th:text="${clt.age}"></td>
+											<td th:text="${clt.adresse}"></td>
+											<td th:text="${clt.email}"></td>
+											<td th:text="${clt.tel}"></td> 
 											<td  sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_UPDATE_CLIENTS')">
-												<a class="btn-danger btn-sm"  th:href="@{clients/delete(code=${frs.code})}" ><i class="fa fa-remove"></i></a>
-												<a id="btnEdit" class="btn-primary btn-sm text-light"  th:onclick="'openNavFormulaireUpdateClient(\''+${frs.code}+'\')'"><i class="fa fa-edit"></i></a>
+												<a class="btn-danger btn-sm" th:href="@{clients/delete(code=${clt.code})}" ><i class="fa fa-remove"></i></a>
+												<a id="btnEdit" class="btn-primary btn-sm text-light" th:data-clt="${clt.code}" th:onclick="openNavFormulaireUpdateClient(this.getAttribute('data-clt'))"><i class="fa fa-edit"></i></a>
 											</td>
 										</tr>
 									</tbody>
@@ -242,7 +244,7 @@
 					          	<ul class="pagination bg-dark">
 									<li th:each="pa,status:${pages}" class="nav-item">
 										<a 	th:class="${status.index}==${pageCourant}?'alert-info nav-link ':'nav-link '" 
-											th:href="@{clients(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}+1"></a>
+											th:href="@{/clients(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}+1"></a>
 									</li>
 								</ul> 
 				           	</div>

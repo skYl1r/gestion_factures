@@ -40,15 +40,15 @@ public class FournisseurController {
 
 	@RequestMapping(value = { "/fournisseurs/add" }, method = RequestMethod.POST)
 	public String addFournisseur(@Valid Fournisseur fournisseur, BindingResult result, Model model) {
-		metierFournisseur.getFournisseur(fournisseur.getCode());
-		if (metierFournisseur.getFournisseur(fournisseur.getCode()) != null)
+	
+		if (metierFournisseur.getFournisseur(fournisseur.getCode()) != null) {
 			model.addAttribute("dejaExist", true);
-
-		else if (saveFournisseur(fournisseur, result, model))
+		}else if (saveFournisseur(fournisseur, result, model)) {
 			model.addAttribute("addOk", "Fournisseur ajouté !");
-		else
+			model.asMap().remove("fournisseur");
+		}else {
 			model.addAttribute("addFailed", true);
-
+		}
 		return index(model, 0, 8, "");
 	}
 

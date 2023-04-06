@@ -41,7 +41,7 @@ public class ProduitController {
 
 		model.addAttribute("familles", metierFamille.getFamilles());
 		model.addAttribute("tvas", metierTva.getTvas());
-
+		
 		if (!model.containsAttribute("produit"))
 			model.addAttribute("produit", new Produit());
 
@@ -50,11 +50,12 @@ public class ProduitController {
 
 	@RequestMapping(value = { "/produits/add" }, method = RequestMethod.POST)
 	public String addProduit(@Valid Produit produit, BindingResult result, Model model) {
-		metierProduit.getProduit(produit.getRef());
-		if (metierProduit.getProduit(produit.getRef()) == null) {
-			if (saveProduit(produit, result, model))
+		Produit p = metierProduit.getProduit(produit.getRef());
+		if (p == null) {
+			if (saveProduit(produit, result, model)) {
 				model.addAttribute("addOk", "Produit ajouté !");
-			else
+				model.asMap().remove("produit");
+			}else
 				model.addAttribute("addField", "");
 		} else {
 			model.addAttribute("dejaExist", true);

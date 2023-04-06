@@ -50,7 +50,6 @@
 			         	<div  
 			         		id="divInfoSociete" class="col"> 
    							<div class="alert-success text-success alert" th:if="${updateOk}" th:text="${updateOk}"></div>
-			         		
 							<div class="card">
 					            <div class="card-header h5">
 					            	Informations  
@@ -59,7 +58,7 @@
 				            		onclick="$('#formulaireUpdateFournisseur').show();$('#divInfoSociete').hide();"></i>
 				            		
 					            </div>
-					            <div class="card-body">  
+					            <div th:if="${masociete}" class="card-body">
 										<table class="table"> 
 										  <tbody> 
 										    <tr>
@@ -118,7 +117,7 @@
 				  					<a class="btn-sm btn-success float-right mr-2" type="submit" 
 				  						onclick="$('#formulaireUpdateFournisseur form').submit();"><i class="fa fa-check"></i></a> 
 					            </div>
-					            <div class="card-body"> 
+					            <div th:if="${masociete}" class="card-body"> 
 									<form method="post" th:action="@{/masociete/update}" name="formulaireUpdateFournisseur" 
 											th:object="${masociete}">
 							       		<input th:value="${masociete.code}" type="hidden" name="code" class="form-control form-control-sm">
@@ -194,8 +193,7 @@
 				        
 				        <script th:if="${updateFailed}" type="text/javascript">
 				        	$('#formulaireUpdateFournisseur').show();$('#divInfoSociete').hide();
-				        </script> 
-					
+				        </script>
 					</div> 
 				
 				</div>

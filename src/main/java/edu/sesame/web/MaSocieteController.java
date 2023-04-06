@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -40,7 +41,7 @@ public class MaSocieteController {
 		session.setAttribute("maSociete", maSociete);
 		return "masociete";
 	}
-
+	
 	@RequestMapping(value = { "/masociete/update" }, method = RequestMethod.POST)
 	public String updatemasociete(@Valid Fournisseur fournisseur, BindingResult result, Model model) {
 		if (saveFournisseur(fournisseur, result, model))

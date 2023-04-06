@@ -127,11 +127,6 @@ public class Produit implements Serializable {
 
 	@Override
 	public String toString() {
-		/*
-		 * "{ ref: "+ref+",\n" + "Des: "+designation+",\n" + "Prix: "+prix+" MAD,\n" +
-		 * "Quantite: "+quantite+",\n" + "Famille : "+famille+",\n" + "TVA : "+tva+"\n"
-		 * + "}";
-		 */
 		return designation;
 	}
 

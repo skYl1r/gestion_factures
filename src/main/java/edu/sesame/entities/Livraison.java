@@ -1,5 +1,6 @@
 package edu.sesame.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,10 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Livraison {
+public class Livraison implements Serializable{
 	
 	@Id
 	@GeneratedValue
@@ -24,6 +27,7 @@ public class Livraison {
 
 	@ManyToOne
 	@JoinColumn(name = "NUM_FACTURE")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Facture facture;
 
 	public Livraison() {

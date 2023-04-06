@@ -39,13 +39,13 @@ public class Fournisseur implements Serializable {
 	private String compteBancaire;
 
 	@Min(1000)
-	@NotNull(message = "Le capitale doit etre égal au moins 1000 MAD")
+	@NotNull(message = "Le capitale doit etre égal au moins 1000 DT")
 	private Double capital;
 
-	@Pattern(regexp = "^(0[0-9]{9,})$", message = "Numéro de télephone doit etre composé au minimum de 10 nombres !")
+	@Pattern(regexp = "^([0-9]{8,})$", message = "Numéro de télephone doit etre composé au minimum de 8 nombres !")
 	private String tel;
 
-	@Pattern(regexp = "^(0[0-9]{9,})$", message = "Fax doit etre composé au minimum  de 10 nombres !")
+	@Pattern(regexp = "(^$)|(^([0-9]{8,})$)", message = "Fax doit etre composé au minimum  de 8 nombres !")
 	private String fax;
 
 	public Fournisseur() {
