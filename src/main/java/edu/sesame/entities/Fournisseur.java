@@ -45,7 +45,7 @@ public class Fournisseur implements Serializable {
 	@Pattern(regexp = "^([0-9]{8,})$", message = "Numéro de télephone doit etre composé au minimum de 8 nombres !")
 	private String tel;
 
-	@Pattern(regexp = "^([0-9]{8,})$", message = "Fax doit etre composé au minimum  de 8 nombres !")
+	@Pattern(regexp = "(^$)|(^([0-9]{8,})$)", message = "Fax doit etre composé au minimum  de 8 nombres !")
 	private String fax;
 
 	public Fournisseur() {

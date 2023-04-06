@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.support.BindingAwareModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,15 +41,15 @@ public class ClientsController {
 
 	@RequestMapping(value = { "/clients/add" }, method = RequestMethod.POST)
 	public String addClient(@Valid Client client, BindingResult result, Model model) {
-		metierClient.getClient(client.getCode());
-		if (metierClient.getClient(client.getCode()) != null)
+		
+		if (metierClient.getClient(client.getCode()) != null) {
 			model.addAttribute("dejaExist", true);
-
-		if (saveClient(client, result, model))
+		}else if (saveClient(client, result, model)) {
 			model.addAttribute("addOk", "Client ajouté !");
-		else
+			model.asMap().remove("client");
+		}else {
 			model.addAttribute("addFailed", true);
-
+		}
 		return index(model, 0, 8, "");
 	}
 

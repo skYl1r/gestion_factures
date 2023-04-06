@@ -207,6 +207,7 @@ public class UserController {
 		if (des.length() <= 2)
 			m.addAttribute("updateDes", "la designation doit etre au minimum 3c.");
 		if (r != null && des.length() > 2) {
+			r.setDesignation(des);
 			rolRep.save(r);
 			m.addAttribute("updateDesOk", "Designation est modifié !");
 		}

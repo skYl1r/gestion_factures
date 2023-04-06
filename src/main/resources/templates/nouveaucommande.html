@@ -11,7 +11,7 @@ $(document).ready(function() {
     $("#formStoreLc").submit(function(e){  
         e.preventDefault();
         var ref = document.formStoreLc.produit.value;
-        var nom = $("#formStoreLc option[value="+ref+"]").text();
+        var nom = $("#formStoreLc option[value='"+ref+"']").text();
         var qte = document.formStoreLc.qte.value;
         var prx = document.formStoreLc.prix.value;
        	$.ajax({

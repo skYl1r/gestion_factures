@@ -34,7 +34,7 @@ public class Client implements Serializable {
 	@NotBlank
 	private String email;
 
-	@Size(min = 8, max = 100, message = "Le numéro de télephone doit etre composé de 10 nombres !")
+	@Size(min = 8, max = 12, message = "Le numéro de télephone doit etre composé de 8 nombres !")
 	private String tel;
 
 	public Client() {

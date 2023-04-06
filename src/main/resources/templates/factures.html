@@ -125,7 +125,7 @@
 											<li th:each="pa,status:${pagesAchat}" class="nav-item">
 												<a 	th:class="${status.index}==${pageCourantAchat}?'alert-secondary nav-link ':'nav-link '" 
 													th:data-frs="${frs}" th:data-clt="${clt}"
-													th:href="@{factures(pageachat=${status.index},pagevente=${pageCourantVente},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente})}" th:text="${status.index}+1"></a>
+													th:href="@{/factures(pageachat=${status.index},pagevente=${pageCourantVente},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente})}" th:text="${status.index}+1"></a>
 											</li>
 										</ul> 
 						           	</div>
@@ -200,7 +200,7 @@
 							          	<ul class="pagination bg-dark" style="border-radius:0">
 											<li th:each="pa,status:${pagesVente}" class="nav-item">
 												<a 	th:class="${status.index}==${pageCourantVente}?'alert-secondary nav-link ':'nav-link '" 
-													th:data-frs="${frs}" th:data-clt="${clt}" th:href="@{factures(pagevente=${status.index},pageachat=${pageCourantAchat},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente})}" th:text="${status.index}+1"></a>
+													th:data-frs="${frs}" th:data-clt="${clt}" th:href="@{/factures(pagevente=${status.index},pageachat=${pageCourantAchat},size=${size},type=${type},client=${clt},fournisseur=${frs},dateachat=${dateachat},datevente=${datevente})}" th:text="${status.index}+1"></a>
 											</li>
 										</ul> 
 							       	</div>

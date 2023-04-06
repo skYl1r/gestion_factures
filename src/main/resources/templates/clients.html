@@ -77,6 +77,9 @@
 				<div class="card-body p-4" >
 				
 					<div class="col">
+						<div th:if="${dejaExist}" class="alert alert-danger text-danger h5" >
+							Le Client est déja existant !
+						</div>
 						<div class="alert alert-success text-success" th:if="${updateOk}" th:text="${updateOk}"></div>
 						<div class="alert alert-success text-primary" th:if="${addOk}" th:text="${addOk}"></div>
 						<div class="alert alert-danger text-danger" th:if="${deleteOk}" th:text="${deleteOk}"></div>
@@ -230,7 +233,7 @@
 											<td th:text="${clt.email}"></td>
 											<td th:text="${clt.tel}"></td> 
 											<td  sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_UPDATE_CLIENTS')">
-												<a class="btn-danger btn-sm"  th:data-clt="${clt.code}" th:href="@{clients/delete(code='this.getAttribute(\'data-clt\')')}" ><i class="fa fa-remove"></i></a>
+												<a class="btn-danger btn-sm" th:href="@{clients/delete(code=${clt.code})}" ><i class="fa fa-remove"></i></a>
 												<a id="btnEdit" class="btn-primary btn-sm text-light" th:data-clt="${clt.code}" th:onclick="openNavFormulaireUpdateClient(this.getAttribute('data-clt'))"><i class="fa fa-edit"></i></a>
 											</td>
 										</tr>
@@ -241,7 +244,7 @@
 					          	<ul class="pagination bg-dark">
 									<li th:each="pa,status:${pages}" class="nav-item">
 										<a 	th:class="${status.index}==${pageCourant}?'alert-info nav-link ':'nav-link '" 
-											th:href="@{clients(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}+1"></a>
+											th:href="@{/clients(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}+1"></a>
 									</li>
 								</ul> 
 				           	</div>

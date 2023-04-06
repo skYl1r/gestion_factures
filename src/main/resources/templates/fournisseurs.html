@@ -242,7 +242,7 @@
 					          	<ul class="pagination bg-dark">
 									<li th:each="pa,status:${pages}" class="nav-item">
 										<a 	th:class="${status.index}==${pageCourant}?'alert-info nav-link ':'nav-link '" 
-											th:href="@{fournisseurs(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}+1"></a>
+											th:href="@{/fournisseurs(page=${status.index},size=${size},motCle=${motCle})}" th:text="${status.index}+1"></a>
 									</li>
 								</ul> 
 				           	</div>

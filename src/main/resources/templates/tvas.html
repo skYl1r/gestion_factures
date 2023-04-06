@@ -17,7 +17,6 @@
         		<div class="col-md-4">
 	        		Nouveau Designation : 
 		        	<input value="" id="designationNouveauTva" class="form-control" aria-label="Example select with button addon" />
-		        	
 		        	Taux : 
 		       			<div class="input-group"> 
 		   			    <input value=""  type='number' id="tauxNouveauTva" class="form-control" aria-label="Example select with button addon" />
@@ -53,7 +52,7 @@
 						       		<button th:id="btnFormulaireUpdateTva+${tva.code}" class="btn btn-success btn-sm" type="button" th:onclick="'edit(this,\''+${tva.code}+'\')'">
 						       			<i class="fa fa-edit fa-x"></i>
 					      			</button>
-					      			<button id="btnDeleteTva" class="btn btn-danger btn-sm" type="button" th:onclick="'deleteTva(\''+${tva.code}+'\')'">
+					      			<button id="btnDeleteTva" class="btn btn-danger btn-sm" type="button" th:data-des="${tva.designation}" th:onclick="deleteTva(this.getAttribute('data-des'))">
 						       			<i class="fa fa-trash fa-x"></i>
 					      			</button>
 						       	</div>
@@ -129,7 +128,8 @@
 			type : "POST",
 			dataType : "json",  
 			success : function( json ) {   
-				alert("Tva "+json.designation+" est supprimé");
+				//alert("Tva "+json.designation+" est supprimé");
+				alert("Tva est supprimé");
 				$("#tr"+id ).remove();
 				$("#listeTvasNouveauArticle option[value="+id+"]").remove(); 
 				$("#listeTvasUpdateArticle option[value="+id+"]").remove(); 
@@ -185,7 +185,10 @@
 						$("#tbodyListeTvas").append(tr);
 						
 						$("#listeTvasNouveauArticle").append("<option value=\""+json.code+"\">"+json.designation+"</option>"); 
-						$("#listeTvasUpdateArticle").append("<option value=\""+json.code+"\">"+json.designation+"</option>");  
+						$("#listeTvasUpdateArticle").append("<option value=\""+json.code+"\">"+json.designation+"</option>");
+						$("#designationNouveauTva").val("");
+						$("#tauxNouveauTva").val("");
+						
 					},
 					error : function( xhr, status ) { alert("Erreur..."); } 
 				});

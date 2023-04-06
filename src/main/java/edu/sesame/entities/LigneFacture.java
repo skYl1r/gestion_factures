@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class LigneFacture implements Serializable {
@@ -20,6 +22,7 @@ public class LigneFacture implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "NUM_FACTURE")
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Facture facture;
 
 	@ManyToOne
