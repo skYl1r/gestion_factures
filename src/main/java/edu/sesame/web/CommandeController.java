@@ -263,6 +263,9 @@ public class CommandeController {
 		for (LigneCommande lc : lcs.values()) {
 			lc.setCommande(commande);
 			lcs.put(lc.getProduit().getRef(), metierLigneCommande.saveLigneCommande(lc));
+			Produit p =  lc.getProduit();
+			p.setQuantite(p.getQuantite() - lc.getQte());
+			lc.setProduit(metierProduit.saveProduit(p));
 		}
 		commande.setLignesCommande(lcs.values());
 
